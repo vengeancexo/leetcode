@@ -1,0 +1,19 @@
+class Solution {
+public:
+    void returnsub(vector<int> &nums, vector<int> &ans, int i, vector<vector<int>> &allsubsets){
+        if(i == nums.size()){
+            allsubsets.push_back(ans);
+            return;
+        }
+        ans.push_back(nums[i]);
+        returnsub(nums, ans, i+1, allsubsets);
+        ans.pop_back();
+        returnsub(nums, ans, i+1, allsubsets);
+    }
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<int> ans;
+        vector<vector<int>> allsubsets;
+        returnsub(nums, ans, 0, allsubsets);
+        return allsubsets;
+    }
+};
